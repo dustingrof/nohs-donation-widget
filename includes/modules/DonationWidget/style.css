@@ -1,0 +1,32 @@
+.donation_values_row,
+.donation_types {
+  display: flex;
+}
+.donation_button {
+  margin: 0 0.08rem;
+  background-color: #e7edf4;
+  border: 1px solid #e7edf4;
+  border-radius: 0.2rem;
+  padding: 0.8rem 0.6rem;
+  display: none;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 25%;
+  flex: 0 1 25%;
+  font-size: 1.3125rem;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transition: background 0.2s ease;
+  transition: background 0.2s ease;
+}
+.donation_single.donation_button.is-visible,
+.donation_types.donation_button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.donation_single.donation_button.is-active.is-visible,
+.donation_types.donation_button.is-active {
+  font-weight: bold;
+  background-color: #f69b1c;
+}
