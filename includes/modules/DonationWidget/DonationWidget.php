@@ -1,9 +1,15 @@
 <?php
+
+/**
+ * TO DO: add field for the beginning URL
+ * TO DO: add parameter format for Canada Helps
+ * TO DO: have buttons work when clicked.
+ */
 class NOHS_DonationWidget extends ET_Builder_Module
 {
 
 	public $slug       = 'nohs_donation_widget';
-	public $vb_support = 'on';
+	public $vb_support = 'off';
 
 	public function init()
 	{
@@ -171,7 +177,7 @@ class NOHS_DonationWidget extends ET_Builder_Module
 					),
 				),
 			),
-			//need to add a single and regular donation description for the Other box
+			//TO DO: need to add a single and regular donation description for the Other box
 			// 'regular_donation_other_amount_description' => array(
 			// 	'label'           => esc_html__('Description for Other Amount option on regular donations', 'nohs-donation-widget'),
 			// 	'type'            => 'text',
@@ -264,6 +270,6 @@ class NOHS_DonationWidget extends ET_Builder_Module
 new NOHS_DonationWidget;
 
 
-/* full extension example available here:
+/* NOTE: full extension example available here:
  * https://github.com/elegantthemes/divi-extension-example/blob/master/includes/modules/CustomCtaAllOptions/CustomCtaAllOptions.php
  */

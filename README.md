@@ -1,3 +1,6 @@
+About this project: A donation widget extension/module to be used with Divi. Allows for setting custom donation amounts and descriptions of what the donation will provide. 
+
+
 This project was bootstrapped with [Create Divi Extension](https://github.com/elegantthemes/create-divi-extension).
 
 Below you will find some information on how to perform common tasks. You can find the most recent version of this guide [here](https://github.com/elegantthemes/create-divi-extension/blob/master/packages/divi-scripts/template/README.md).
