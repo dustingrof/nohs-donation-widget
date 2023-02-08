@@ -104,6 +104,16 @@ class NOHS_DonationWidget extends ET_Builder_Module
 							),
 						),
 					),
+					'single_donation_other' => array(
+						'label'    => esc_html('Donation Other', 'nohs-donation-widget'),
+						'controls' => array(
+							'single_donation_other_description' => array(
+								'label' => esc_html__('Description', 'nohs-donation-widget'),
+								'type'  => 'textarea',
+								'description'     => esc_html__('Content entered here will be used to describe what the amount of this donation can help fund.', 'nohs-donation-widget'),
+							),
+						),
+					),
 				),
 			),
 			//need to add a single and regular donation description for the Other box
@@ -175,6 +185,16 @@ class NOHS_DonationWidget extends ET_Builder_Module
 							),
 						),
 					),
+					'regular_donation_other' => array(
+						'label'    => esc_html('Donation Other', 'nohs-donation-widget'),
+						'controls' => array(
+							'regular_donation_other_description' => array(
+								'label' => esc_html__('Description', 'nohs-donation-widget'),
+								'type'  => 'textarea',
+								'description'     => esc_html__('Content entered here will be used to describe what the amount of this donation can help fund.', 'nohs-donation-widget'),
+							),
+						),
+					),
 				),
 			),
 			//TO DO: need to add a single and regular donation description for the Other box
@@ -230,25 +250,35 @@ class NOHS_DonationWidget extends ET_Builder_Module
 				<section class="donation_single donation_description is-visible">
 					<p>%2$s</p>
 				</section>
-				<section class="donation_single donation_description is-visible">
+				<section class="donation_single donation_description">
 					<p>%4$s</p>
 				</section>
-				<section class="donation_single donation_description is-visible">
+				<section class="donation_single donation_description">
 					<p>%6$s</p>
 				</section>
-				<section class="donation_single donation_description is-visible">
+				<section class="donation_single donation_description ">
+					<p>%13$s</p>
+				</section>
+				<section class="donation_single donation_description">
 					<p>%8$s</p>
 				</section>
-				<section class="donation_single donation_description is-visible">
+				<section class="donation_regular donation_description">
 					<p>%10$s</p>
 				</section>
-				<section class="donation_single donation_description is-visible">
-					<p>%2$s</p>
+				<section class="donation_regular donation_description">
+					<p>%12$s</p>
+				</section>
+				<section class="donation_regular donation_description">
+					<p>%14$s</p>
 				</section>
 			</div>
 			<form action="" class="" method="post">
 				<input class="donation_type" id="donationType" name="donationType" type="hidden" value="single">
 				<input class="donation_value" id="donationType" name="donationValue" type="hidden" value="20">
+				<input class="donation_value" id="donationType" name="donationValue" type="visible" value="20">
+				<button type="button" class="donation_button donate_now" data-donationType="single-other" data-donationValue="other">
+					Donate Now
+    			</button>
 			</form>
 			',
 			esc_html($this->props['single_donation_1_value']),
@@ -263,6 +293,8 @@ class NOHS_DonationWidget extends ET_Builder_Module
 			esc_html($this->props['regular_donation_2_description']),
 			esc_html($this->props['regular_donation_3_value']),
 			esc_html($this->props['regular_donation_3_description']),
+			esc_html($this->props['single_donation_other_description']),
+			esc_html($this->props['regular_donation_other_description']),
 		);
 	}
 }

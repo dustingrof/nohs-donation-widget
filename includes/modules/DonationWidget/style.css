@@ -19,6 +19,11 @@
     -webkit-transition: background 0.2s ease;
     transition: background 0.2s ease;
 }
+.donate_now {
+    display: block;
+    width: 100%;
+    background-color: darkorange;
+}
 .donation_single.donation_button.is-visible,
 .donation_types.donation_button {
     display: -webkit-box;
@@ -29,4 +34,11 @@
 .donation_types.donation_button.is-active {
     font-weight: bold;
     background-color: #f69b1c;
+}
+
+.donation_description {
+    display: none;
+}
+.donation_description.is-visible {
+    display: block;
 }
