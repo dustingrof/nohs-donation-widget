@@ -25,13 +25,16 @@
     background-color: darkorange;
 }
 .donation_single.donation_button.is-visible,
+.donation_regular.donation_button.is-visible,
 .donation_types.donation_button {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 }
-.donation_single.donation_button.is-active.is-visible,
-.donation_types.donation_button.is-active {
+.donation_types_single_button.is-active,
+.donation_types_regular_button.is-active,
+.donation_single_button.is-visible.is-active,
+.donation_regular_button.is-visible.is-active {
     font-weight: bold;
     background-color: #f69b1c;
 }
@@ -40,5 +43,11 @@
     display: none;
 }
 .donation_description.is-visible {
+    display: block;
+}
+input.donation_value {
+    display: none;
+}
+input.donation_value.is-visible {
     display: block;
 }

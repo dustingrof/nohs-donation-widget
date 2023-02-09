@@ -211,71 +211,70 @@ class NOHS_DonationWidget extends ET_Builder_Module
 		return sprintf(
 			'
 			<div class="donation_types">
-				<button type="button" class="donation_types donation_button is-active" data-donation-type="single" data-initial-option="single-%1$s" data-initial-option-value="%1$s" aria-pressed="true">
+				<button type="button" class="donation_types donation_types_single_button donation_button is-active" data-donation-type="single" data-initial-option="single-%1$s" data-initial-option-value="%1$s" aria-pressed="true">
         Single
     		</button>
-				<button type="button" class="donation_types donation_button" data-donation-type="monthly" data-initial-option="monthly-%7$s" data-initial-option-value="%7$s" aria-pressed="false">
+				<button type="button" class="donation_types donation_types_regular_button donation_button" data-donation-type="monthly" data-initial-option="monthly-%7$s" data-initial-option-value="%7$s" aria-pressed="false">
         Regular
     		</button>
 			</div>
 			<div class="donation_values">
 				<div class="donation_values_row">
-					<button type="button" class="donation_single donation_button is-active is-visible" data-widget-option="single-%1$s" data-widget-option-value="%1$s">
-        		$%1$s
-    			</button>
-					<button type="button" class="donation_single donation_button is-visible" data-widget-option="single-%3$s" data-widget-option-value="%3$s">
+					<button type="button" class="donation_single donation_single_button donation_single_1_value donation_button is-active is-visible" data-widget-option="single-%1$s" data-widget-option-value="%1$s">
+        				$%1$s
+    				</button>
+					<button type="button" class="donation_single donation_single_button donation_single_2_value donation_button is-visible" data-widget-option="single-%3$s" data-widget-option-value="%3$s">
         		$%3$s
     			</button>
-					<button type="button" class="donation_single donation_button is-visible" data-widget-option="single-%5$s" data-widget-option-value="%5$s">
+					<button type="button" class="donation_single donation_single_button donation_single_3_value donation_button is-visible" data-widget-option="single-%5$s" data-widget-option-value="%5$s">
         		$%5$s
     			</button>
-					<button type="button" class="donation_single donation_button is-visible" data-widget-option="single-other" data-widget-option-value="other">
+					<button type="button" class="donation_single donation_single_button donation_single_other_value donation_button is-visible" data-widget-option="single-other" data-widget-option-value="other">
 					Other
     			</button>
-					<button type="button" class="donation_regular donation_button" data-widget-option="regular-%7$s" data-widget-option-value="%7$s">
+					<button type="button" class="donation_regular donation_regular_button donation_regular_1_value donation_button is-active" data-widget-option="regular-%7$s" data-widget-option-value="%7$s">
 					$%7$s
     			</button>
-					<button type="button" class="donation_regular donation_button" data-widget-option="regular-%9$s" data-widget-option-value="%9$s">
+					<button type="button" class="donation_regular donation_regular_button donation_regular_2_value donation_button" data-widget-option="regular-%9$s" data-widget-option-value="%9$s">
 					$%9$s
     			</button>
-					<button type="button" class="donation_regular donation_button" data-widget-option="regular-%11$s" data-widget-option-value="%11$s">
+					<button type="button" class="donation_regular donation_regular_button donation_regular_3_value donation_button" data-widget-option="regular-%11$s" data-widget-option-value="%11$s">
 					$%11$s
     			</button>
-					<button type="button" class="donation_regular donation_button" data-widget-option="single-other" data-widget-option-value="other">
+					<button type="button" class="donation_regular donation_regular_button donation_regular_other_value donation_button" data-widget-option="single-other" data-widget-option-value="other">
 					Other
     			</button>
 				</div>
 			</div>
 			<div class="donation_descriptions">
-				<section class="donation_single donation_description is-visible">
+				<section class="donation_single donation_single_1_description donation_description is-visible is-active">
 					<p>%2$s</p>
 				</section>
-				<section class="donation_single donation_description">
+				<section class="donation_single donation_single_2_description donation_description">
 					<p>%4$s</p>
 				</section>
-				<section class="donation_single donation_description">
+				<section class="donation_single donation_single_3_description donation_description">
 					<p>%6$s</p>
 				</section>
-				<section class="donation_single donation_description ">
+				<section class="donation_single donation_single_other_description donation_description ">
 					<p>%13$s</p>
 				</section>
-				<section class="donation_single donation_description">
+				<section class="donation_regular donation_regular_1_description donation_description is-active ">
 					<p>%8$s</p>
 				</section>
-				<section class="donation_regular donation_description">
+				<section class="donation_regular donation_regular_2_description donation_description">
 					<p>%10$s</p>
 				</section>
-				<section class="donation_regular donation_description">
+				<section class="donation_regular donation_regular_3_description donation_description">
 					<p>%12$s</p>
 				</section>
-				<section class="donation_regular donation_description">
+				<section class="donation_regular donation_regular_other_description donation_description">
 					<p>%14$s</p>
 				</section>
 			</div>
 			<form action="" class="" method="post">
 				<input class="donation_type" id="donationType" name="donationType" type="hidden" value="single">
-				<input class="donation_value" id="donationType" name="donationValue" type="hidden" value="20">
-				<input class="donation_value" id="donationType" name="donationValue" type="visible" value="20">
+				<input class="donation_value" id="donationType" name="donationValue" value="">
 				<button type="button" class="donation_button donate_now" data-donationType="single-other" data-donationValue="other">
 					Donate Now
     			</button>
