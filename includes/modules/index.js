@@ -1,3 +1,3 @@
 import DonationWidget from './DonationWidget/DonationWidget';
 
-export default [DonationWidge];
+export default [DonationWidget];

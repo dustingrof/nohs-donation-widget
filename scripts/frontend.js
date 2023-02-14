@@ -15,7 +15,7 @@ jQuery(function($) {
         $('.donation_types_single_button').addClass('is-active');
 
         //add single value to hidden form input field
-        $('#donationType').val('single');
+        $('#donationButton').attr('data-donation-type', 'single');
         //try an if statement here
         // if ($('.donation_regular.is-visible').length) {
 
@@ -41,7 +41,7 @@ jQuery(function($) {
         );
 
         //add regular value to hidden form input field
-        $('#donationType').val('regular');
+        $('#donationButton').attr('data-donation-type', 'regular');
     });
 
     //handle the clicking of single donation 1
@@ -53,6 +53,11 @@ jQuery(function($) {
         $('.donation_single_1_description').addClass('is-visible is-active');
         $('input.donation_value').removeClass('is-visible');
         $('.donation_single_1_value').addClass('is-active');
+        //add donation value to hidden form input field
+        const newDonationValue = $('.donation_single_1_value').data(
+            'widget-option-value'
+        );
+        $('#donationButton').attr('data-donationvalue', newDonationValue);
     });
     //handle the clicking of single donation 2
     $('.donation_single_2_value').click(function() {
@@ -128,5 +133,20 @@ jQuery(function($) {
         );
         $('input.donation_value').addClass('is-visible');
         $('.donation_regular_other_value').addClass('is-active');
+    });
+
+    $('#donation-form').click(function(event) {
+        event.preventDefault();
+        const urlBody = $('#donationButton').data('campaign-url');
+        const urlParamAmount = $('#donationButton').data('donation-value');
+        const urlParamFrequency = $('#donationButton').data('donation-type');
+        const newURL =
+            urlBody +
+            '?v1=true' +
+            '&amount=' +
+            urlParamAmount +
+            '&frequency=' +
+            urlParamFrequency;
+        window.open(newURL, '_blank');
     });
 });

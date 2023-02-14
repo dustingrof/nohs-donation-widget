@@ -26,6 +26,7 @@ class NOHS_DonationWidget extends ET_Builder_Module
 			// Content tab's slug is "general"
 			'general'  => array(
 				'toggles' => array(
+					'campaign_setup_section' 			=> esc_html__('Campagin Setup', 'nohs-donation-widget'),
 					'single_donation_section' 			=> esc_html__('Single Donations', 'nohs-donation-widget'),
 					'regular_donation_section'      => esc_html__('Regular Donations', 'nohs-donation-widget'),
 				),
@@ -36,6 +37,12 @@ class NOHS_DonationWidget extends ET_Builder_Module
 	public function get_fields()
 	{
 		return array(
+			'campaign_setup_details' => array(
+				'label' => esc_html__('Campaign URL', 'nohs-donation-widget'),
+				'description'     => esc_html__('Please enter the Canada Helps URL without any parameters. For example: https://www.canadahelps.org/en/dn/m/10589 is okay. But having parameters like ?amount=100 at the end is not okay.', 'nohs-donation-widget'),
+				'type'  => 'text',
+				'toggle_slug'     => 'campaign_setup_section',
+			),
 			'single_donation_details'     => array(
 				'label'           => esc_html__('Single Donation Details', 'nohs-donation-widget'),
 				'type'                => 'composite',
@@ -272,10 +279,10 @@ class NOHS_DonationWidget extends ET_Builder_Module
 					<p>%14$s</p>
 				</section>
 			</div>
-			<form action="" class="" method="post">
+			<form id="donation-form" class="" method="get" action="" target="_blank">
 				<input class="donation_type" id="donationType" name="donationType" type="hidden" value="single">
-				<input class="donation_value" id="donationType" name="donationValue" value="">
-				<button type="button" class="donation_button donate_now" data-donationType="single-other" data-donationValue="other">
+				<input class="donation_value" id="donationValue" name="donationValue" value="">
+				<button type="button" id="donationButton" class="donation_button donate_now" data-donation-type="single-other" data-donation-value="other" data-campaign-url="https://www.canadahelps.org/en/dn/m/10589">
 					Donate Now
     			</button>
 			</form>
