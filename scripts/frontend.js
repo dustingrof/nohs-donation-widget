@@ -3,10 +3,10 @@
 jQuery(function($) {
     //handle the clicking of the single frequency donation button
     $('.donation_types_single_button').click(function() {
-        $('.donation_regular_button').removeClass('is-visible');
-        $('.donation_types_regular_button').removeClass('is-active');
+        $('.donation_monthly_button').removeClass('is-visible');
+        $('.donation_types_monthly_button').removeClass('is-active');
         $('.donation_single_button').addClass('is-visible');
-        $('.donation_regular.donation_description.is-active').removeClass(
+        $('.donation_monthly.donation_description.is-active').removeClass(
             'is-visible'
         );
         $('.donation_single.donation_description.is-active').addClass(
@@ -17,34 +17,34 @@ jQuery(function($) {
         //add single value to hidden form input field
         $('#donationButton').attr('data-donation-type', 'single');
         //try an if statement here
-        // if ($('.donation_regular.is-visible').length) {
+        // if ($('.donation_monthly.is-visible').length) {
 
         // }
     });
 
-    //handle the clicking of the regular donation button
-    $('.donation_types_regular_button').click(function() {
+    //handle the clicking of the monthly donation button
+    $('.donation_types_monthly_button').click(function() {
         $('.donation_single_button').removeClass('is-visible');
         $('.donation_types_single_button').removeClass('is-active');
-        $('.donation_regular_button').addClass('is-visible');
-        $('.donation_regular.donation_description.is-active').addClass(
+        $('.donation_monthly_button').addClass('is-visible');
+        $('.donation_monthly.donation_description.is-active').addClass(
             'is-visible'
         );
-        $('.donation_types_regular_button').addClass('is-active');
+        $('.donation_types_monthly_button').addClass('is-active');
         $('.donation_description').removeClass('is-visible');
 
         $('.donation_single.donation_description.is-active').removeClass(
             'is-visible'
         );
-        $('.donation_regular.donation_description.is-active').addClass(
+        $('.donation_monthly.donation_description.is-active').addClass(
             'is-visible'
         );
 
-        //add regular value to hidden form input field
-        $('#donationButton').attr('data-donation-type', 'regular');
+        //add monthly value to hidden form input field
+        $('#donationButton').attr('data-donation-type', 'monthly');
     });
 
-    $('#donationValue').keypress(function() {
+    $('#donationValue').keyup(function() {
         const newDonationValue = $('#donationValue').val();
         $('#donationButton').attr('data-donation-value', newDonationValue);
     });
@@ -105,71 +105,77 @@ jQuery(function($) {
         );
         $('input.donation_value').addClass('is-visible');
         $('.donation_single_other_value').addClass('is-active');
+        //add donation value to data attribute on donate button
+        const newDonationValue = $('#donationValue').val();
+        $('#donationButton').attr('data-donation-value', newDonationValue);
     });
 
-    //handle the clicking of regular donation 1
-    $('.donation_regular_1_value').click(function() {
-        $('.donation_regular.donation_regular_button').removeClass('is-active');
-        $('.donation_description.donation_regular')
+    //handle the clicking of monthly donation 1
+    $('.donation_monthly_1_value').click(function() {
+        $('.donation_monthly.donation_monthly_button').removeClass('is-active');
+        $('.donation_description.donation_monthly')
             .removeClass('is-visible')
             .removeClass('is-active');
-        $('.donation_regular_1_description').addClass('is-visible is-active');
+        $('.donation_monthly_1_description').addClass('is-visible is-active');
         $('input.donation_value').removeClass('is-visible');
-        $('.donation_regular_1_value').addClass('is-active');
+        $('.donation_monthly_1_value').addClass('is-active');
         //add donation value to data attribute on donate button
-        const newDonationValue = $('.donation_regular_1_value').data(
+        const newDonationValue = $('.donation_monthly_1_value').data(
             'widget-option-value'
         );
         $('#donationButton').attr('data-donation-value', newDonationValue);
     });
-    //handle the clicking of regular donation 2
-    $('.donation_regular_2_value').click(function() {
-        $('.donation_regular.donation_regular_button').removeClass('is-active');
-        $('.donation_description.donation_regular')
+    //handle the clicking of monthly donation 2
+    $('.donation_monthly_2_value').click(function() {
+        $('.donation_monthly.donation_monthly_button').removeClass('is-active');
+        $('.donation_description.donation_monthly')
             .removeClass('is-visible')
             .removeClass('is-active');
-        $('.donation_regular_2_description').addClass('is-visible is-active');
+        $('.donation_monthly_2_description').addClass('is-visible is-active');
         $('input.donation_value').removeClass('is-visible');
-        $('.donation_regular_2_value').addClass('is-active');
+        $('.donation_monthly_2_value').addClass('is-active');
         //add donation value to data attribute on donate button
-        const newDonationValue = $('.donation_regular_2_value').data(
+        const newDonationValue = $('.donation_monthly_2_value').data(
             'widget-option-value'
         );
         $('#donationButton').attr('data-donation-value', newDonationValue);
     });
-    //handle the clicking of regular donation 3
-    $('.donation_regular_3_value').click(function() {
-        $('.donation_regular.donation_regular_button').removeClass('is-active');
-        $('.donation_description.donation_regular')
+    //handle the clicking of monthly donation 3
+    $('.donation_monthly_3_value').click(function() {
+        $('.donation_monthly.donation_monthly_button').removeClass('is-active');
+        $('.donation_description.donation_monthly')
             .removeClass('is-visible')
             .removeClass('is-active');
-        $('.donation_regular_3_description').addClass('is-visible is-active');
+        $('.donation_monthly_3_description').addClass('is-visible is-active');
         $('input.donation_value').removeClass('is-visible');
-        $('.donation_regular_3_value').addClass('is-active');
+        $('.donation_monthly_3_value').addClass('is-active');
         //add donation value to data attribute on donate button
-        const newDonationValue = $('.donation_regular_3_value').data(
+        const newDonationValue = $('.donation_monthly_3_value').data(
             'widget-option-value'
         );
         $('#donationButton').attr('data-donation-value', newDonationValue);
     });
-    //handle the clicking of regular donation other
-    $('.donation_regular_other_value').click(function() {
-        $('.donation_regular.donation_regular_button').removeClass('is-active');
-        $('.donation_description.donation_regular')
+    //handle the clicking of monthly donation other
+    $('.donation_monthly_other_value').click(function() {
+        $('.donation_monthly.donation_monthly_button').removeClass('is-active');
+        $('.donation_description.donation_monthly')
             .removeClass('is-visible')
             .removeClass('is-active');
-        $('.donation_regular_other_description').addClass(
+        $('.donation_monthly_other_description').addClass(
             'is-visible is-active'
         );
         $('input.donation_value').addClass('is-visible');
-        $('.donation_regular_other_value').addClass('is-active');
+        $('.donation_monthly_other_value').addClass('is-active');
+        //add donation value to data attribute on donate button
+        const newDonationValue = $('#donationValue').val();
+        $('#donationButton').attr('data-donation-value', newDonationValue);
     });
 
-    $('#donation-form').click(function(event) {
+    $('#donationButton').click(function(event) {
         event.preventDefault();
-        const urlBody = $('#donationButton').data('campaign-url');
-        const urlParamAmount = $('#donationButton').data('donation-value');
-        const urlParamFrequency = $('#donationButton').data('donation-type');
+        let urlBody = $('#donationButton').data('campaign-url');
+        let urlParamAmount = $('#donationButton').data('donation-value');
+        let urlParamFrequency = $('#donationButton').data('donation-type');
         const newURL =
             urlBody +
             '?v1=true' +

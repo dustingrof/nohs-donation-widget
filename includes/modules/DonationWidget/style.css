@@ -1,6 +1,16 @@
+.donation_widget_wrapper {
+    background-color: white;
+    padding: 1rem;
+}
 .donation_values_row,
 .donation_types {
     display: flex;
+    /* margin-bottom: 0.5rem; */
+}
+.donation_types .donation_button {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
 }
 .donation_button {
     margin: 0 0.08rem;
@@ -23,22 +33,28 @@
     display: block;
     width: 100%;
     background-color: darkorange;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
 }
 .donation_single.donation_button.is-visible,
-.donation_regular.donation_button.is-visible,
+.donation_monthly.donation_button.is-visible,
 .donation_types.donation_button {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    margin: 0.2rem;
 }
 .donation_types_single_button.is-active,
-.donation_types_regular_button.is-active,
+.donation_types_monthly_button.is-active,
 .donation_single_button.is-visible.is-active,
-.donation_regular_button.is-visible.is-active {
+.donation_monthly_button.is-visible.is-active {
     font-weight: bold;
     background-color: #f69b1c;
 }
-
+#donation-form {
+    display: flex;
+}
 .donation_description {
     display: none;
 }
@@ -49,5 +65,8 @@ input.donation_value {
     display: none;
 }
 input.donation_value.is-visible {
-    display: block;
+    display: flex;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
 }

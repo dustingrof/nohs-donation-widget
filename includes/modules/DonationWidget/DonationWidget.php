@@ -1,9 +1,7 @@
 <?php
 
 /**
- * TO DO: add field for the beginning URL
- * TO DO: add parameter format for Canada Helps
- * TO DO: have buttons work when clicked.
+ * TO DO: Fix bug not changing url after clicking once
  */
 class NOHS_DonationWidget extends ET_Builder_Module
 {
@@ -28,7 +26,7 @@ class NOHS_DonationWidget extends ET_Builder_Module
 				'toggles' => array(
 					'campaign_setup_section' 			=> esc_html__('Campagin Setup', 'nohs-donation-widget'),
 					'single_donation_section' 			=> esc_html__('Single Donations', 'nohs-donation-widget'),
-					'regular_donation_section'      => esc_html__('Regular Donations', 'nohs-donation-widget'),
+					'monthly_donation_section'      => esc_html__('Monthly Donations', 'nohs-donation-widget'),
 				),
 			)
 		);
@@ -123,19 +121,19 @@ class NOHS_DonationWidget extends ET_Builder_Module
 					),
 				),
 			),
-			//need to add a single and regular donation description for the Other box
-			'regular_donation_details'     => array(
-				'label'           => esc_html__('Regular Donation Details', 'nohs-donation-widget'),
+			//need to add a single and monthly donation description for the Other box
+			'monthly_donation_details'     => array(
+				'label'           => esc_html__('monthly Donation Details', 'nohs-donation-widget'),
 				'type'                => 'composite',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__('Content entered here will appear as a regular donation', 'nohs-donation-widget'),
-				'toggle_slug'     => 'regular_donation_section',
+				'description'     => esc_html__('Content entered here will appear as a monthly donation', 'nohs-donation-widget'),
+				'toggle_slug'     => 'monthly_donation_section',
 				'composite_type'      => 'default',
 				'composite_structure' => array(
-					'regular_donation_1' => array(
+					'monthly_donation_1' => array(
 						'label'    => esc_html('Donation 1', 'nohs-donation-widget'),
 						'controls' => array(
-							'regular_donation_1_value' => array(
+							'monthly_donation_1_value' => array(
 								'label' => esc_html__('Amount', 'nohs-donation-widget'),
 								'description'     => esc_html__('You can use the slider to adjust donation amount, or manually type an amount in the box beside.', 'nohs-donation-widget'),
 								'type'  => 'range',
@@ -145,17 +143,17 @@ class NOHS_DonationWidget extends ET_Builder_Module
 									'step' => '1',
 								),
 							),
-							'regular_donation_1_description' => array(
+							'monthly_donation_1_description' => array(
 								'label' => esc_html__('Description', 'nohs-donation-widget'),
 								'type'  => 'textarea',
 								'description'     => esc_html__('Content entered here will be used to describe what the amount of this donation can help fund.', 'nohs-donation-widget'),
 							),
 						),
 					),
-					'regular_donation_2' => array(
+					'monthly_donation_2' => array(
 						'label'    => esc_html('Donation 2', 'nohs-donation-widget'),
 						'controls' => array(
-							'regular_donation_2_value' => array(
+							'monthly_donation_2_value' => array(
 								'label' => esc_html__('Amount', 'nohs-donation-widget'),
 								'description'     => esc_html__('You can use the slider to adjust donation amount, or manually type an amount in the box beside.', 'nohs-donation-widget'),
 								'type'  => 'range',
@@ -165,17 +163,17 @@ class NOHS_DonationWidget extends ET_Builder_Module
 									'step' => '1',
 								),
 							),
-							'regular_donation_2_description' => array(
+							'monthly_donation_2_description' => array(
 								'label' => esc_html__('Description', 'nohs-donation-widget'),
 								'type'  => 'textarea',
 								'description'     => esc_html__('Content entered here will be used to describe what the amount of this donation can help fund.', 'nohs-donation-widget'),
 							),
 						),
 					),
-					'regular_donation_3' => array(
+					'monthly_donation_3' => array(
 						'label'    => esc_html('Donation 3', 'nohs-donation-widget'),
 						'controls' => array(
-							'regular_donation_3_value' => array(
+							'monthly_donation_3_value' => array(
 								'label' => esc_html__('Amount', 'nohs-donation-widget'),
 								'description'     => esc_html__('You can use the slider to adjust donation amount, or manually type an amount in the box beside.', 'nohs-donation-widget'),
 								'type'  => 'range',
@@ -185,17 +183,17 @@ class NOHS_DonationWidget extends ET_Builder_Module
 									'step' => '1',
 								),
 							),
-							'regular_donation_3_description' => array(
+							'monthly_donation_3_description' => array(
 								'label' => esc_html__('Description', 'nohs-donation-widget'),
 								'type'  => 'textarea',
 								'description'     => esc_html__('Content entered here will be used to describe what the amount of this donation can help fund.', 'nohs-donation-widget'),
 							),
 						),
 					),
-					'regular_donation_other' => array(
+					'monthly_donation_other' => array(
 						'label'    => esc_html('Donation Other', 'nohs-donation-widget'),
 						'controls' => array(
-							'regular_donation_other_description' => array(
+							'monthly_donation_other_description' => array(
 								'label' => esc_html__('Description', 'nohs-donation-widget'),
 								'type'  => 'textarea',
 								'description'     => esc_html__('Content entered here will be used to describe what the amount of this donation can help fund.', 'nohs-donation-widget'),
@@ -204,9 +202,9 @@ class NOHS_DonationWidget extends ET_Builder_Module
 					),
 				),
 			),
-			//TO DO: need to add a single and regular donation description for the Other box
-			// 'regular_donation_other_amount_description' => array(
-			// 	'label'           => esc_html__('Description for Other Amount option on regular donations', 'nohs-donation-widget'),
+			//TO DO: need to add a single and monthly donation description for the Other box
+			// 'monthly_donation_other_amount_description' => array(
+			// 	'label'           => esc_html__('Description for Other Amount option on monthly donations', 'nohs-donation-widget'),
 			// 	'type'            => 'text',
 			// 	'toggle_slug'     => 'single_donation_section',
 			// ),
@@ -217,12 +215,13 @@ class NOHS_DonationWidget extends ET_Builder_Module
 	{
 		return sprintf(
 			'
+			<div class="donation_widget_wrapper">
 			<div class="donation_types">
 				<button type="button" class="donation_types donation_types_single_button donation_button is-active" data-donation-type="single" data-initial-option="single-%1$s" data-initial-option-value="%1$s" aria-pressed="true">
         Single
     		</button>
-				<button type="button" class="donation_types donation_types_regular_button donation_button" data-donation-type="monthly" data-initial-option="monthly-%7$s" data-initial-option-value="%7$s" aria-pressed="false">
-        Regular
+				<button type="button" class="donation_types donation_types_monthly_button donation_button" data-donation-type="monthly" data-initial-option="monthly-%7$s" data-initial-option-value="%7$s" aria-pressed="false">
+        Monthly
     		</button>
 			</div>
 			<div class="donation_values">
@@ -239,16 +238,16 @@ class NOHS_DonationWidget extends ET_Builder_Module
 					<button type="button" class="donation_single donation_single_button donation_single_other_value donation_button is-visible" data-widget-option="single-other" data-widget-option-value="other">
 					Other
     			</button>
-					<button type="button" class="donation_regular donation_regular_button donation_regular_1_value donation_button is-active" data-widget-option="regular-%7$s" data-widget-option-value="%7$s">
+					<button type="button" class="donation_monthly donation_monthly_button donation_monthly_1_value donation_button is-active" data-widget-option="monthly-%7$s" data-widget-option-value="%7$s">
 					$%7$s
     			</button>
-					<button type="button" class="donation_regular donation_regular_button donation_regular_2_value donation_button" data-widget-option="regular-%9$s" data-widget-option-value="%9$s">
+					<button type="button" class="donation_monthly donation_monthly_button donation_monthly_2_value donation_button" data-widget-option="monthly-%9$s" data-widget-option-value="%9$s">
 					$%9$s
     			</button>
-					<button type="button" class="donation_regular donation_regular_button donation_regular_3_value donation_button" data-widget-option="regular-%11$s" data-widget-option-value="%11$s">
+					<button type="button" class="donation_monthly donation_monthly_button donation_monthly_3_value donation_button" data-widget-option="monthly-%11$s" data-widget-option-value="%11$s">
 					$%11$s
     			</button>
-					<button type="button" class="donation_regular donation_regular_button donation_regular_other_value donation_button" data-widget-option="single-other" data-widget-option-value="other">
+					<button type="button" class="donation_monthly donation_monthly_button donation_monthly_other_value donation_button" data-widget-option="single-other" data-widget-option-value="other">
 					Other
     			</button>
 				</div>
@@ -266,26 +265,27 @@ class NOHS_DonationWidget extends ET_Builder_Module
 				<section class="donation_single donation_single_other_description donation_description ">
 					<p>%13$s</p>
 				</section>
-				<section class="donation_regular donation_regular_1_description donation_description is-active ">
+				<section class="donation_monthly donation_monthly_1_description donation_description is-active ">
 					<p>%8$s</p>
 				</section>
-				<section class="donation_regular donation_regular_2_description donation_description">
+				<section class="donation_monthly donation_monthly_2_description donation_description">
 					<p>%10$s</p>
 				</section>
-				<section class="donation_regular donation_regular_3_description donation_description">
+				<section class="donation_monthly donation_monthly_3_description donation_description">
 					<p>%12$s</p>
 				</section>
-				<section class="donation_regular donation_regular_other_description donation_description">
+				<section class="donation_monthly donation_monthly_other_description donation_description">
 					<p>%14$s</p>
 				</section>
 			</div>
 			<form id="donation-form" class="" method="get" action="" target="_blank">
 				<input class="donation_type" id="donationType" name="donationType" type="hidden" value="single">
 				<input class="donation_value" id="donationValue" name="donationValue" value="">
-				<button type="button" id="donationButton" class="donation_button donate_now" data-donation-type="single-other" data-donation-value="other" data-campaign-url="https://www.canadahelps.org/en/dn/m/10589">
+				<button type="button" id="donationButton" class="donation_button donate_now" data-donation-type="single" data-donation-value="%1$s" data-campaign-url="%15$s">
 					Donate Now
     			</button>
 			</form>
+			</div>
 			',
 			esc_html($this->props['single_donation_1_value']),
 			esc_html($this->props['single_donation_1_description']),
@@ -293,14 +293,15 @@ class NOHS_DonationWidget extends ET_Builder_Module
 			esc_html($this->props['single_donation_2_description']),
 			esc_html($this->props['single_donation_3_value']),
 			esc_html($this->props['single_donation_3_description']),
-			esc_html($this->props['regular_donation_1_value']),
-			esc_html($this->props['regular_donation_1_description']),
-			esc_html($this->props['regular_donation_2_value']),
-			esc_html($this->props['regular_donation_2_description']),
-			esc_html($this->props['regular_donation_3_value']),
-			esc_html($this->props['regular_donation_3_description']),
+			esc_html($this->props['monthly_donation_1_value']),
+			esc_html($this->props['monthly_donation_1_description']),
+			esc_html($this->props['monthly_donation_2_value']),
+			esc_html($this->props['monthly_donation_2_description']),
+			esc_html($this->props['monthly_donation_3_value']),
+			esc_html($this->props['monthly_donation_3_description']),
 			esc_html($this->props['single_donation_other_description']),
-			esc_html($this->props['regular_donation_other_description']),
+			esc_html($this->props['monthly_donation_other_description']),
+			esc_html($this->props['campaign_setup_details']),
 		);
 	}
 }

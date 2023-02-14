@@ -24,17 +24,17 @@ class DonationWidget extends Component {
                 <p>{this.props.single_donation_3_description}</p>
 
                 <h1 className='nohs-donation-widget-heading'>
-                    {this.props.regular_donation_1_value}
+                    {this.props.monthly_donation_1_value}
                 </h1>
-                <p>{this.props.regular_donation_1_description}</p>
+                <p>{this.props.monthly_donation_1_description}</p>
                 <h1 className='nohs-donation-widget-heading'>
-                    {this.props.regular_donation_2_value}
+                    {this.props.monthly_donation_2_value}
                 </h1>
-                <p>{this.props.regular_donation_2_description}</p>
+                <p>{this.props.monthly_donation_2_description}</p>
                 <h1 className='nohs-donation-widget-heading'>
-                    {this.props.regular_donation_3_value}
+                    {this.props.monthly_donation_3_value}
                 </h1>
-                <p>{this.props.regular_donation_3_description}</p>
+                <p>{this.props.monthly_donation_3_description}</p>
             </Fragment>
         );
     }
