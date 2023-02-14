@@ -44,6 +44,11 @@ jQuery(function($) {
         $('#donationButton').attr('data-donation-type', 'regular');
     });
 
+    $('#donationValue').keypress(function() {
+        const newDonationValue = $('#donationValue').val();
+        $('#donationButton').attr('data-donation-value', newDonationValue);
+    });
+
     //handle the clicking of single donation 1
     $('.donation_single_1_value').click(function() {
         $('.donation_single.donation_single_button').removeClass('is-active');
@@ -100,14 +105,6 @@ jQuery(function($) {
         );
         $('input.donation_value').addClass('is-visible');
         $('.donation_single_other_value').addClass('is-active');
-        //add donation value to data attribute on donate button
-        // const newDonationValue = $('input.donation_value.is-visible').val();
-        // $('#donationButton').attr('data-donation-value', newDonationValue);
-    });
-
-    $('#donationValue').keypress(function() {
-        const newDonationValue = $('#donationValue').val();
-        $('#donationButton').attr('data-donation-value', newDonationValue);
     });
 
     //handle the clicking of regular donation 1
@@ -119,6 +116,11 @@ jQuery(function($) {
         $('.donation_regular_1_description').addClass('is-visible is-active');
         $('input.donation_value').removeClass('is-visible');
         $('.donation_regular_1_value').addClass('is-active');
+        //add donation value to data attribute on donate button
+        const newDonationValue = $('.donation_regular_1_value').data(
+            'widget-option-value'
+        );
+        $('#donationButton').attr('data-donation-value', newDonationValue);
     });
     //handle the clicking of regular donation 2
     $('.donation_regular_2_value').click(function() {
@@ -129,6 +131,11 @@ jQuery(function($) {
         $('.donation_regular_2_description').addClass('is-visible is-active');
         $('input.donation_value').removeClass('is-visible');
         $('.donation_regular_2_value').addClass('is-active');
+        //add donation value to data attribute on donate button
+        const newDonationValue = $('.donation_regular_2_value').data(
+            'widget-option-value'
+        );
+        $('#donationButton').attr('data-donation-value', newDonationValue);
     });
     //handle the clicking of regular donation 3
     $('.donation_regular_3_value').click(function() {
@@ -139,6 +146,11 @@ jQuery(function($) {
         $('.donation_regular_3_description').addClass('is-visible is-active');
         $('input.donation_value').removeClass('is-visible');
         $('.donation_regular_3_value').addClass('is-active');
+        //add donation value to data attribute on donate button
+        const newDonationValue = $('.donation_regular_3_value').data(
+            'widget-option-value'
+        );
+        $('#donationButton').attr('data-donation-value', newDonationValue);
     });
     //handle the clicking of regular donation other
     $('.donation_regular_other_value').click(function() {
